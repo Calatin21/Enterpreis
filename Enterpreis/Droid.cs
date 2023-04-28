@@ -1,8 +1,14 @@
 ﻿namespace Enterpreis {
     internal class Droid : Wesen {
+        private Random rnd = new Random();
+        private List<int> zahlen = new List<int>();
         public Droid() {
-            Random rnd = new Random();
-            this.Name = "R2D" + rnd.Next(0,1000);
+            int zahl;
+            do {
+                zahl = rnd.Next(0, 1000);
+            } while ((zahlen.Contains(zahl)));
+            this.Name = "R2D" + zahl;
+            zahlen.Add(zahl);
         }
     }
 }

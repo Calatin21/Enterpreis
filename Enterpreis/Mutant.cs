@@ -1,8 +1,14 @@
 ﻿namespace Enterpreis {
     internal class Mutant : Wesen {
+        private Random rnd = new Random();
+        private List<int> zahlen = new List<int>();
         public Mutant() {
-            Random rnd = new Random();
-            this.Name = "Mutant_" + rnd.Next(0,1000);
+            int zahl;
+            do {
+                zahl = rnd.Next(0, 1000);
+            } while ((zahlen.Contains(zahl)));
+            this.Name = "Mutant_" + zahl;
+            zahlen.Add(zahl);
         }
     }
 }

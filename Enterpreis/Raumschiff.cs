@@ -1,17 +1,17 @@
 ﻿namespace Enterpreis {
     internal class Raumschiff {
         public event EventHandler<BeamEventArgs> Event;
-        //public event EventHandler<BeamEventArgs> Event1Kbis2K;
-        //public event EventHandler<BeamEventArgs> Event3K;
         public string Name { get; set; }
         public int Geschwindigkeit { get; set; }
         public List<Wesen> Passagiere { get; set; } = new List<Wesen>();
         public void durchWeltallFliegen(Weltall all) {
             Random rnd = new Random();
-            BeamEventArgs bea = new BeamEventArgs();
-            for (int i = 0; i < 10; i++) {
+            BeamEventArgs bea = new BeamEventArgs() { Alle = all };
+            Console.WriteLine("Der Flug der {0} beginnt an Bord sind:", this.Name);
+            this.WerIstAnBord();
+            for (int i = 0; i < 100; i++) {
                 this.Geschwindigkeit = rnd.Next(0, 3001);
-                if (Geschwindigkeit > 100) {
+                if (Geschwindigkeit < 100) {
                     bea.Lebensform = all.GetDroid();
                     Event(this, bea);
                 }
@@ -23,17 +23,21 @@
                     bea.Lebensform = all.GetWookie();
                     Event(this, bea);
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(50);
             }
+            this.WerIstAnBord();
         }
         public void WerIstAnBord() {
+            Passagiere.Sort();
+            Console.WriteLine("Passagiere Anzahl: {0}", Passagiere.Count());
             foreach (Wesen item in Passagiere) {
                 Console.WriteLine(item.Name);
             }
         }
         public void Beamen(object source, BeamEventArgs bea) {
             this.Passagiere.Add(bea.Lebensform);
-            Console.WriteLine("Bei Geschwindigkeit: {0} Lebensform an Bord gebeamt.", Geschwindigkeit);
+            bea.Alle.Objekte.Remove(bea.Lebensform);
+            Console.WriteLine("Bei Geschwindigkeit: {0} Lebensform vom Typ {1} an Bord gebeamt.", Geschwindigkeit, bea.Lebensform.GetType());
         }
     }
 }

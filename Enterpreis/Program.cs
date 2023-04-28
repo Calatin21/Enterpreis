@@ -12,14 +12,12 @@
             galaxie.GetRaumschiff().Passagiere.Add(galaxie.GetWesen("Spock"));
             galaxie.GetRaumschiff().Passagiere.Add(galaxie.GetWesen("McCoy"));
             galaxie.GetRaumschiff().Passagiere.Add(galaxie.GetWesen("Scotty"));
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 1000; i++) {
                 galaxie.Objekte.Add(new Droid());
                 galaxie.Objekte.Add(new Mutant());
                 galaxie.Objekte.Add(new Wookie() { Name = "Chewbacca" + i});
             }
             galaxie.GetRaumschiff().durchWeltallFliegen(galaxie);
-            galaxie.GetRaumschiff().WerIstAnBord();
-
         }
     }
 }
