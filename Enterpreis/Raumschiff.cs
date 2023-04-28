@@ -35,7 +35,6 @@
                 Console.WriteLine(item.Name);
             }
         }
-        //people.Sort((x, y) => string.Compare(x.LastName, y.LastName));
         public void Beamen(object source, BeamEventArgs bea) {
             this.Passagiere.Add(bea.Lebensform);
             bea.Alle.Objekte.Remove(bea.Lebensform);
