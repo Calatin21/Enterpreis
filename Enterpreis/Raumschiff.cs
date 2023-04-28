@@ -29,11 +29,13 @@
         }
         public void WerIstAnBord() {
             Passagiere.Sort();
-            Console.WriteLine("Passagiere Anzahl: {0}", Passagiere.Count());
+            //Passagiere.OrderBy();
+            Console.WriteLine("Passagier Anzahl: {0}", Passagiere.Count());
             foreach (Wesen item in Passagiere) {
                 Console.WriteLine(item.Name);
             }
         }
+        //people.Sort((x, y) => string.Compare(x.LastName, y.LastName));
         public void Beamen(object source, BeamEventArgs bea) {
             this.Passagiere.Add(bea.Lebensform);
             bea.Alle.Objekte.Remove(bea.Lebensform);

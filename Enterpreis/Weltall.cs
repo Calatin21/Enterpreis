@@ -4,10 +4,8 @@
         public Raumschiff GetRaumschiff() {
             Raumschiff ergebnis = null;
             foreach (Raumschiff item in Objekte) {
-                //if (item.Name == name) {
                     ergebnis = item;
                     break;
-                //}
             }
             return ergebnis;
         }
